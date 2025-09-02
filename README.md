@@ -1,5 +1,5 @@
 # Repositorio Modelado y Programación 
 ## **EQUIPO:** Pumalacticos 
-- Ibehel Luro Tenorio
+- Ihebel Luro Tenorio
 - Danjiro Cisneros Álvarez
 - Oscar Manuel Teniente Ornelas
