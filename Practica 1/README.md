@@ -6,8 +6,17 @@
 
 **Objetivo:** El objetivo de esta práctica es implementar adecuadamente los patrones Strategy y Observer en la resolución del problema propuesto. Su solución debe estar integrada en un solo diagrama de clases así como una sola implementación.
 
+### Ejecucion:
+
+Desde la raiz, en terminal ejecutar:
+`-d . src/simulator/*.java`
+
+`java simulator.SubsSimulator`
+
+## Detalles de la práctica
+
 ### Diagrama:
-Se oganiza en 3 ramas principales: Usuario (Usr), Simulador (SubsSimulator) y servicios (Service).
+Se oganiza en 2 clases principales: Usuario (Usr), Simulador (SubsSimulator) y 2 interfaces, servicios (Service) para implementar Strategy y Observer para el patrón del mismo nombre, además hacemos uso de una clase FPrinter (para File Printer) que funciona como un wrapper para escribir en los txt de cada usuario.
 - **SubsSimulator:** Clase Principal donde el progama crea la simulación. Crea los Usuarios *(Usr)* y simula el paso de los meses *updateUsers()*, indicando cuando se deben hacer los cobros y enviar las notificaciones a los Usuarios. (La lista de los usuarios es estática *[users: static List<Usr>]*)
 -  **Usr:** Viene siendo los usuarios, representa el Cliente. Implementa la interfaz *Observer*, donde cada usuario gestiona su dinero(*money*), su nombre(*usrName) y las suscripciones en las que está (*services: HashMap<String, Service>*)
 -  **Service:** (Interfaz) Define las operaciones para conocer el precio (*getPrice*), recomendación (*getRecomendation*) y el estado de suscripción (*getStatus*,*setStatus*). Funciona como el **SUJETO** en Observer
