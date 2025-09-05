@@ -8,7 +8,7 @@
 
 ### Ejecucion:
 
-Desde la raiz, en terminal ejecutar:
+Desde donde esta este README.md, en terminal ejecutar:
 `-d . src/simulator/*.java`
 
 `java simulator.SubsSimulator`
