@@ -1,3 +1,4 @@
+package pizzabot.helados;
 public class HeladoBase implements Helado {
     int precio;
     String sabor;
@@ -8,8 +9,8 @@ public class HeladoBase implements Helado {
 
     }
 
-    public String getNombre(){
-        return "Hola";
+    public String getDescripcion(){
+        return "Sabor del Helado: " + sabor;
     }
 
     public int getPrecio(){
