@@ -1,4 +1,4 @@
-package pizzabot.robotState;
+package pizzabot.robot;
 
 public interface RobotState {
     void action();

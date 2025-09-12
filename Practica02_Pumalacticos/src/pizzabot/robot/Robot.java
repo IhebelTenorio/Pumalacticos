@@ -1,5 +1,4 @@
-package pizzabot;
-import pizzabot.robotState.*;
+package pizzabot.robot;
 
 public class Robot {
     RobotState state;

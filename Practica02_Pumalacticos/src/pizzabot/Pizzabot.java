@@ -2,6 +2,8 @@ package pizzabot;
 
 import java.util.Scanner;
 
+import pizzabot.robot.Robot;
+
 public class Pizzabot {
     private static Robot robot = new Robot();
     private static Scanner sc = new Scanner(System.in);

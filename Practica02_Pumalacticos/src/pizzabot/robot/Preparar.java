@@ -1,4 +1,4 @@
-package pizzabot.robotState;
+package pizzabot.robot;
 
 public class Preparar implements RobotState{
 
