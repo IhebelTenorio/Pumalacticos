@@ -1,5 +1,6 @@
-package pizzabot;
+package pizzabot.robotState;
 
 public interface RobotState {
+    void action();
 
 }
