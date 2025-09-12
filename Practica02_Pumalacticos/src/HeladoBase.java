@@ -9,7 +9,7 @@ public class HeladoBase implements Helado {
     }
 
     public String getNombre(){
-        return "Hola";
+        return "El sabor del helado es" + sabor;
     }
 
     public int getPrecio(){
