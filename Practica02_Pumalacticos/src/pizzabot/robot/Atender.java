@@ -3,12 +3,21 @@ package pizzabot.robot;
 import java.util.Scanner;
 import pizzabot.helados.*;
 import pizzabot.pizza.*;
+
+/**
+ * La clase representa el estado en que el robot interactua con el cliente para tener su orden
+ */
 public class Atender implements RobotState {
 
+    /**
+     * Scanner para recibir inputs del cliente 
+     */
     private Scanner scanner = new Scanner(System.in);
 
-    // Método principal que gestiona el menú de atención al cliente.
-     
+    /**
+     * Método principla que inicia la interacción con el cliente 
+     * @param robot el robot que gestiona el flujo de los estados 
+     */
     public void tomarOrden(Robot robot) {
         System.out.println("\n¡Hola! ¿Qué te gustaría ordenar hoy?");
         
@@ -43,6 +52,9 @@ public class Atender implements RobotState {
         }
     }
 
+    /**
+     * Muestra el menu principal con las opciones disponibles
+     */
     private void mostrarMenuPrincipal() {
         System.out.println("\n MENÚ ");
         System.out.println("1. Ordenar Pizza (Solo puedes elegir una)");
@@ -53,6 +65,10 @@ public class Atender implements RobotState {
         System.out.print("Elige una opción: ");
     }
 
+    /**
+     * Muestra el menu de la pizza 
+     * @param robot el robot que guarda la pizza de la orden
+     */
     private void menuOrdenarPizza(Robot robot) {
         System.out.println("\n PIZZAS CESARIN ");
         System.out.println("1. Pepperoni $120");
@@ -99,6 +115,10 @@ public class Atender implements RobotState {
         System.out.println(pizzaSeleccionada.getNombre() + " con " + tipoMasa + " añadida a tu orden");
     }
 
+    /**
+     * Muestra el menu de los helados y da la opción de agregar extras pero solo puede tener 3 extras máximo 
+     * @param robot el robot que guarda el helado de la orden
+     */
     private void menuOrdenarHelado(Robot robot) {
         System.out.println("\n MENÚ DE HELADOS ");
         System.out.println("1. Fresa $25");
@@ -251,6 +271,10 @@ public class Atender implements RobotState {
     }
     }
 
+    /**
+     * Muestra el estado actual de la orden de la pizza, helado y el total final
+     * @param robot el robot que tiene la orden
+     */
     private void verOrdenActual(Robot robot) {
         System.out.println("\n TU ORDEN ACTUAL ");
         if (robot.getPizzaEnOrden() != null) {
@@ -273,7 +297,9 @@ public class Atender implements RobotState {
         System.out.println("Total: $" + total); 
     }
 
-    //  transiciones de estado
+    /**
+     * Métodos de transición
+     */
     public void llamar(Robot robot) {
         System.out.println("ERROR: El robot ya está atendiendo.");
     }
