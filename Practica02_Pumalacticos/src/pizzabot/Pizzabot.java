@@ -1,42 +1,28 @@
-package pizzabot;
+package pizzabot; 
 
-import java.util.Scanner;
+    import java.util.Scanner;
+    import pizzabot.robot.Robot;
 
-import pizzabot.robot.Robot;
+// Clase principal que contiene el método main para ejecutar la simulación de optimus prime.
 
 public class Pizzabot {
-    private static Robot robot = new Robot();
-    private static Scanner sc = new Scanner(System.in);
-    public static void main(String[] args){
-        // Imprimir menú
-        int opt;
-        while(true){
-            System.out.println("¿Desea despertar al robot?");
-            System.out.println("1. Si");
-            System.out.println("2. No");
-            System.out.println("3. Salir");
-            //Manejamos el caso en que no se coloque un número
-            try{
-                opt = sc.nextInt();
-            } catch(Exception e){
-                opt = 0; // Solo vamos a hacer como que no es válido
-                System.out.println("Esa no es una opción válida, elija una del menú por favor");
-                break;
-            }
-            switch (opt) {
-                case 1:
-                    robot.despierta();
-                    break;
-                case 2:
-                    // Aquí puedes agregar la lógica para no despertar al robot
-                    System.out.println("El robot permanecerá dormido.");
-                case 3:
-                    System.out.println("Hasta luego!");
-                    return;
-                default:
-                    System.out.println("Invalido, elija una opción correcta por favor");
-                    break;
-            }
-        }
+
+    public static void main(String[] args) {
+        System.out.println("Bienvenido a Pitzapitza");
+
+        Robot Cesarin = new Robot();
+
+        Cesarin.llamar();
+
+        System.out.println("Presiona ENTER para solicitar la entrega de tu orden.");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+
+        Cesarin.entregar();
+
+        System.out.println("\n Regresa pronto (en robot)");
+
+        
+        scanner.close();
     }
 }

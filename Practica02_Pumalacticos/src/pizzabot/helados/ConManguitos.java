@@ -1,33 +1,33 @@
 package pizzabot.helados;
 
 /**
- * La clase es un decorador de la interfaz Helado
+ * Clase que es un decorador de la clase HeladoExtra 
  */
 public class ConManguitos extends HeladoExtra {
 
     /**
-     * Crea un nuevo decorador que tendra manguitos
-     * @param helado el helado ya sea base o decorado que se le va a añadir el nuevo extra
+     * Crea un nuevo decorador 
+     * @param helado el helado base o decorado el cual se le pondra los manguitos
      */
     public ConManguitos(Helado helado) {
         super(helado);
     }
 
     /**
-     * Da la descripción del helado con el nuevo extra
-     * @return descripción extendida del helado con manguitos
+     * Da la descripción del helado y da el extra que se agrego
+     * @return la descripción del helado con los manguitos
      */
     @Override
     public String getDescripcion() {
-        return Extra.getDescripcion() + ", con manguitos";
+        return this.Extra.getDescripcion() + ", con manguitos";
     }
 
     /**
-     * Da el precio del helado con el nuevo costo del extra
-     * @return precio del helado aumentando 5
+     * Da el precio del helado agregando el costo del extra
+     * @return precio del helado con 5 mas 
      */
     @Override
     public int getPrecio() {
-        return Extra.getPrecio() + 5;
+        return this.Extra.getPrecio() + 5;
     }
 }

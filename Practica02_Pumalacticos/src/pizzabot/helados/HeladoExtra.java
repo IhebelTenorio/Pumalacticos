@@ -1,32 +1,30 @@
 package pizzabot.helados;
-
-/**Clase abstracta que es la clase base para los decoradores de la clase Helado
- * 
+/**
+ * La clase abstracta que es la clase base para todos los decoradores que implementa Helado 
  */
-public abstract class HeladoExtra implements Helado{
+public abstract class HeladoExtra implements Helado {
 
-    Helado Extra;
+    protected Helado Extra; 
 
     /**
-     * Crea una nueva instancia de decoracion de toppings
-     * @param Extra el helado, ya sea base o previamente decorado que se le añadira un nuevo extra
+     * Crea un nuevo ingrediente extra que se va a usar para el helado 
+     * @param helado el helado base o ya con ingrediente extra el cual se le va a añadir un nuevo extra
      */
-    public HeladoExtra(Helado Extra){
-        this.Extra = Extra;
+    public HeladoExtra(Helado helado){
+        this.Extra = helado;
     }
 
     /**
-     * Da la descripción del helado con el extra añadido
-     * @return la descripción del helado con el nuevo extra
+     * Da la descripción del helado con el extra aplicado
+     * @return la descripción del helado con el extra
      */
     @Override
-    public abstract String getDescripcion(); 
-    
-    /**
-     * Da el precio helado con el extra añadido
-     * @return el precio modificado del helado 
-     */
-    @Override
-    public abstract int getPrecio(); 
-}
+    public abstract String getDescripcion();
 
+    /**
+     * Da el precio del helado con el extra ya puesto
+     * @return el precio nuevo del helado 
+     */
+    @Override
+    public abstract int getPrecio();
+}
