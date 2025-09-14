@@ -7,9 +7,9 @@ public class ConAros extends HeladoExtra {
     }
    // @Override
     public String getDescripcion() {
-        return Extra.getDescripcion() + ", con aros";
+        return this.Extra.getDescripcion() + ", con aros";
     }
     public int getPrecio() {
-        return Extra.getPrecio() + 5;
+        return this.Extra.getPrecio() + 5;
     }
 }

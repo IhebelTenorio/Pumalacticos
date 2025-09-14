@@ -7,9 +7,9 @@ public class ConChispas extends HeladoExtra {
     }
    // @Override
     public String getDescripcion() {
-        return Extra.getDescripcion() + ", con chispas de chocolate";
+        return this.Extra.getDescripcion() + ", con chispas de chocolate";
     }
     public int getPrecio() {
-        return Extra.getPrecio() + 5;
+        return this.Extra.getPrecio() + 5;
     }
 }

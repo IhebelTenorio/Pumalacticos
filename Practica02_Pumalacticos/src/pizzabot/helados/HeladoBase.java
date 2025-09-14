@@ -4,8 +4,8 @@ public class HeladoBase implements Helado {
     String sabor;
 
     public HeladoBase(int precio, String sabor){
-        precio = this.precio;
-        sabor = this.sabor;
+        this.precio = precio;
+        this.sabor = sabor;
 
     }
 

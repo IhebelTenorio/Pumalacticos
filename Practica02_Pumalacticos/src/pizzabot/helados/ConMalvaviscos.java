@@ -7,9 +7,9 @@ public class ConMalvaviscos extends HeladoExtra {
     }
    // @Override
     public String getDescripcion() {
-        return Extra.getDescripcion() + ", con malvaviscos";
+        return this.Extra.getDescripcion() + ", con malvaviscos";
     }
     public int getPrecio() {
-        return Extra.getPrecio() + 5;
+        return this.Extra.getPrecio() + 5;
     }
 }

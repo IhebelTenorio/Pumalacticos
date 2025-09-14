@@ -1,14 +1,13 @@
 package pizzabot.helados;
-public abstract class HeladoExtra implements Helado{
 
-    Helado Extra;
+public abstract class HeladoExtra implements Helado {
 
-    public HeladoExtra(Helado Extra){
-        this.Extra = Extra;
+    protected Helado Extra; 
+
+    public HeladoExtra(Helado helado){
+        this.Extra = helado;
     }
 
-    public abstract String getDescripcion(); {}
-
-    public abstract int getPrecio(); {}
+    public abstract String getDescripcion();
+    public abstract int getPrecio();
 }
-

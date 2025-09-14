@@ -7,9 +7,9 @@ public class ConGusanitos extends HeladoExtra {
     }
    // @Override
     public String getDescripcion() {
-        return Extra.getDescripcion() + ", con gusanitos";
+        return this.Extra.getDescripcion() + ", con gusanitos";
     }
     public int getPrecio() {
-        return Extra.getPrecio() + 5;
+        return this.Extra.getPrecio() + 5;
     }
 }

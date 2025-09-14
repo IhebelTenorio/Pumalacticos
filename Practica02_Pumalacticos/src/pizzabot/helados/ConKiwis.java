@@ -7,9 +7,9 @@ public class ConKiwis extends HeladoExtra {
     }
    // @Override
     public String getDescripcion() {
-        return Extra.getDescripcion() + ", con kiwis";
+        return this.Extra.getDescripcion() + ", con kiwis";
     }
     public int getPrecio() {
-        return Extra.getPrecio() + 5;
+        return this.Extra.getPrecio() + 5;
     }
 }

@@ -7,9 +7,9 @@ public class ConPanditas extends HeladoExtra {
     }
    // @Override
     public String getDescripcion() {
-        return Extra.getDescripcion() + ", con panditas";
+        return this.Extra.getDescripcion() + ", con panditas";
     }
     public int getPrecio() {
-        return Extra.getPrecio() + 5;
+        return this.Extra.getPrecio() + 5;
     }
 }
