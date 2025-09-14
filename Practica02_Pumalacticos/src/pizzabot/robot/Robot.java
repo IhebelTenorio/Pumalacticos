@@ -8,6 +8,8 @@ public class Robot {
     }
 
     public void despierta() {
-        state = new Atender();
+        state = new Atender(this);
     }
+
+    protected void preparar(){}
 }

@@ -1,26 +1,26 @@
 package pizzabot.pizza;
 
 /**
- * Clase que representa una pizza de ingrediente de pepperoni que esta extendida de la clase PrepararPizza
+ * Clase que representa una pizza a la mexicana que esta extendida de la clase PrepararPizza
  * implementando los pasos de preparación de una pizza comun
  */
-public class Pepper extends PrepararPizza{
-    private String sabor = "pepperoni";
+public class Mex extends PrepararPizza{
+    private String sabor = "Mexicana";
     private String masa;
 
     /**
-     * Crea una pizza con pepperoni, en base a una masa elegida
+     * Crea una pizza a la mexicana, en base a una masa elegida
      * @param masa El tipo de masa que se usara para la pizza
      */
-    public Pepper(String masa){
+    public Mex(String masa){
         this.masa = masa;
     }
-        
+   
     /**
      * Prepara la masa de la pizza e imprime un mensaje diciendo que esta haciendo
      */
     protected void prepararMasa(){
-        System.out.println("Preparando masa "+masa);
+        System.out.println("Preparando masa " + masa);
     }
 
     /**
@@ -55,7 +55,7 @@ public class Pepper extends PrepararPizza{
      * Coloca la proteina indicada e imprime que lo esta haciendo
      */
     protected void colocarProteina(){
-        System.out.println("Colocando Pepperoni");
+        System.out.println("Colocando Champiñones");
     }
 
     /**
@@ -93,13 +93,13 @@ public class Pepper extends PrepararPizza{
     protected boolean esVegetariana(){
         return false;
     }
-
+    
     /**
      * Regresa una pequeña descripción de la pizza preparada
      * @return un string de la descripción
      */
     public String getDescripcion(){
-        return "Pizza con pepperonis";
+        return "Pizza a la mexicana";
     }
 
     /**
@@ -109,18 +109,13 @@ public class Pepper extends PrepararPizza{
     public String getSabor(){
         return sabor;
     }
-
+    
     /**
      * Checa el precio de la pizza
      * @return el precio de la pizza en base a la cual es
      */
     public int getPrecio(){
-        return 163;
+        return 299;
     }
 
-    
-    
-    
-    
-    
 }

@@ -45,4 +45,7 @@ public abstract class PrepararPizza {
 
     protected abstract void prepararMasa();
 
+    protected abstract boolean esVegetariana();
+
+    protected abstract String getDescripcion();
 }

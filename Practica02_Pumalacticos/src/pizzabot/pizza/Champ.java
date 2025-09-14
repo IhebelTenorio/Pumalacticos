@@ -1,26 +1,26 @@
 package pizzabot.pizza;
 
 /**
- * Clase que representa una pizza de ingrediente de pepperoni que esta extendida de la clase PrepararPizza
+ * Clase que representa una pizza de ingrediente de champiñones que esta extendida de la clase PrepararPizza
  * implementando los pasos de preparación de una pizza comun
  */
-public class Pepper extends PrepararPizza{
-    private String sabor = "pepperoni";
+public class Champ extends PrepararPizza{
+    private String sabor = "champiñones";
     private String masa;
 
     /**
-     * Crea una pizza con pepperoni, en base a una masa elegida
+     * Crea una pizza con champiñones, en base a una masa elegida
      * @param masa El tipo de masa que se usara para la pizza
      */
-    public Pepper(String masa){
+    public Champ(String masa){
         this.masa = masa;
     }
-        
+       
     /**
      * Prepara la masa de la pizza e imprime un mensaje diciendo que esta haciendo
      */
     protected void prepararMasa(){
-        System.out.println("Preparando masa "+masa);
+        System.out.println("Preparando masa " + masa);
     }
 
     /**
@@ -43,7 +43,7 @@ public class Pepper extends PrepararPizza{
     protected void colocarQueso(){
         System.out.println("Colocando queso");
     }
-
+    
     /**
      * Coloca las especias e imprime que lo esta haciendo 
      */
@@ -55,7 +55,7 @@ public class Pepper extends PrepararPizza{
      * Coloca la proteina indicada e imprime que lo esta haciendo
      */
     protected void colocarProteina(){
-        System.out.println("Colocando Pepperoni");
+        System.out.println("Colocando Champiñones");
     }
 
     /**
@@ -91,7 +91,7 @@ public class Pepper extends PrepararPizza{
      * @return <false> porque tiene carne
      */
     protected boolean esVegetariana(){
-        return false;
+        return true;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Pepper extends PrepararPizza{
      * @return un string de la descripción
      */
     public String getDescripcion(){
-        return "Pizza con pepperonis";
+        return "Pizza con champiñones";
     }
 
     /**
@@ -115,12 +115,7 @@ public class Pepper extends PrepararPizza{
      * @return el precio de la pizza en base a la cual es
      */
     public int getPrecio(){
-        return 163;
+        return 178;
     }
 
-    
-    
-    
-    
-    
 }
