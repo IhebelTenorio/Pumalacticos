@@ -1,30 +1,20 @@
 package ninjaAcademyApp.Ninja;
 
-public class Voluntario implements Ninja{
-    private String nombre;
-    private int edad;
-    private String clan;
-    private int habilidad;
+public class Voluntario extends Konoha {
+    private String rango;
     
-    public Voluntario(String nombre, int edad, String clan, int habilidad){
-        this.nombre = nombre;
-        this.edad = edad;
-        this.clan = clan;
-        this.habilidad = habilidad;
+    public Voluntario(String nombre, int edad, String clan, int nivelHabilidad, String rango){
+        super(nombre, edad, clan, nivelHabilidad);
+        this.rango = rango;
     }
 
 
-    public String getNombre(){
-        return nombre;
+    public String getRango(){
+        return rango;
     }
-    public int getEdad(){
-        return edad;
-    }
-    public String getClan(){
-        return clan;
-    }
-    public int getHabilidad(){
-        return habilidad;
-    }
+    
+    public String toString() {
+        return super.toString() + " Voluntario [rango=" + rango + "]";
+    }   
     
 }

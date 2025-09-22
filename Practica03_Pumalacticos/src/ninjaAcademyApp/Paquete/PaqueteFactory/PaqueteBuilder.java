@@ -1,14 +1,14 @@
 package ninjaAcademyApp.Paquete.PaqueteFactory;
 import ninjaAcademyApp.Paquete.Paquete;
 
-public interface paqueteBuilder {
+public interface PaqueteBuilder {
     
-    void agregarKunai();
-    void agregarShuriken();
-    void agregarBotiquin();
-    void agregarPapelBomba();
-    void agregarBombaHumo();
+    void agregarKunai(int cantidad);
+    void agregarShuriken(int cantidad);
+    void agregarBotiquin(int cantidad);
+    void agregarPapelBomba(int cantidad);
+    void agregarBombaHumo(int cantidad);
 
-    public Paquete build();
+    Paquete build();
 
 }

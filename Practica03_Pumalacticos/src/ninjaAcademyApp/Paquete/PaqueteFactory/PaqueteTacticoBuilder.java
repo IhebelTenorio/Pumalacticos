@@ -2,31 +2,35 @@ package ninjaAcademyApp.Paquete.PaqueteFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import ninjaAcademyApp.Herramienta.Herramienta;
-import ninjaAcademyApp.Herramienta.Botiquin;
-import ninjaAcademyApp.Herramienta.Kunai;
-import ninjaAcademyApp.Herramienta.Shuriken;
+import ninjaAcademyApp.Herramienta.*;
 import ninjaAcademyApp.Paquete.Paquete;
 
 public class PaqueteTacticoBuilder implements PaqueteBuilder{
-    private List<Herramienta> herramientas = new ArrayList<>();
-    
-    public PaqueteTacticoBuilder(){}
+    private Paquete paquete;
+    public PaqueteTacticoBuilder(){
+        this.paquete = new Paquete();
+}
 
-    public void agregarKunai(){
-        herramientas.add(new Kunai(1));
+    public void agregarKunai(int cantidad){
+        for(int i=0; i < cantidad; i++){
+            this.paquete.agregarHerramienta(new Kunai());
+        }
     }
-    public void agregarShuriken(){
-        herramientas.add(new Shuriken(1));
+    public void agregarShuriken(int cantidad){
+        for(int i=0; i < cantidad; i++){
+            this.paquete.agregarHerramienta(new Shuriken());
+        }
     }
-    public void agregarBotiquin(){
-        herramientas.add(new Botiquin(1));
+    public void agregarBotiquin(int cantidad){
+        for(int i=0; i < cantidad; i++){
+            this.paquete.agregarHerramienta(new Botiquin());
+        }
     }
-    public void agregarPapelBomba(){}
-    public void agregarBombaHumo(){}
+    public void agregarPapelBomba(int cantidad){}
+    public void agregarBombaHumo(int cantidad){}
 
     public Paquete build(){
-        return new Paquete(herramientas);
+        return this.paquete;
     }
 
 }
