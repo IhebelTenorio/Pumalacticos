@@ -13,6 +13,10 @@ public class Paquete {
         this.herramientas.addAll(herramientas);
     }
 
+    public Paquete(){
+        this.herramientas = new ArrayList<>();
+    }
+
     public List<Herramienta> getHerramientas() {
         return herramientas;
     }
