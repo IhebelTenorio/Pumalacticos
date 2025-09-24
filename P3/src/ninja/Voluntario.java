@@ -1,6 +1,6 @@
 package ninja;
 
-public class Voluntario{
+public class Voluntario implements Ninja{
     private String nombre;
     private int edad;
     private String clan;

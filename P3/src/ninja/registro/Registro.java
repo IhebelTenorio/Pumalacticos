@@ -7,11 +7,12 @@ import java.util.List;
 import ninja.*;
 
 public class Registro {
-    private Hashtable<String, Aspirante> aspirantes = new Hashtable<>();
-    private List<Voluntario> voluntarios = new ArrayList<>();
+    private Hashtable<String, Ninja> aspirantes;
+    private List<Ninja> voluntarios;
 
     public Registro(){
-        // No necesitamos nada
+        aspirantes = new Hashtable<>();
+        voluntarios = new ArrayList<>();
     }
 
     public void registrarAspirante(Aspirante aspirante){
@@ -22,11 +23,14 @@ public class Registro {
         voluntarios.add(voluntario);
     }
     
-    public Aspirante getAspirante(String nombre){
+    public Ninja getAspirante(String nombre){
         return aspirantes.get(nombre);
     }
+    public ArrayList<Ninja> getAspirantes(){
+        return new ArrayList<>(aspirantes.values());
+    }
 
-    public Voluntario getVoluntario(int index){
+    public Ninja getVoluntario(int index){
         return voluntarios.get(index);
     }
 
@@ -37,15 +41,5 @@ public class Registro {
     public NinjaIterator getIteradorVoluntarios(){
         return new NinjaIterator(voluntarios);
     }
-
-    public void retirarAspirante(String nombre){
-        aspirantes.remove(nombre);
-    }
-
-    public void retirarVoluntario(int index){
-        voluntario.
-    }
-
-
 
 }
