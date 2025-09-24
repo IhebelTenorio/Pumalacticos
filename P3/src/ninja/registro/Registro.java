@@ -26,9 +26,6 @@ public class Registro {
     public Ninja getAspirante(String nombre){
         return aspirantes.get(nombre);
     }
-    public ArrayList<Ninja> getAspirantes(){
-        return new ArrayList<>(aspirantes.values());
-    }
 
     public Ninja getVoluntario(int index){
         return voluntarios.get(index);
