@@ -6,6 +6,7 @@ import Paquete.Paquete;
 
 public class Director {
     private PBuilder builder;
+    private static Scanner sc = new Scanner(System.in);
 
     public Director(PBuilder builder){
         this.builder = builder;
@@ -42,7 +43,6 @@ public class Director {
 
     public Paquete construirCustom(){
         builder.reset();
-        try (Scanner sc = new Scanner(System.in)) {
             System.out.println("¿Cuántas Kunai deben ir en el paquete? Escriba un numero mayor o igual a 0");
             builder.agregarKunai(sc.nextInt());
             System.out.println("¿Cuántas Shuriken deben ir en el paquete? Escriba un numero mayor o igual a 0");
@@ -53,10 +53,10 @@ public class Director {
             builder.agregarPapelBomba(sc.nextInt());
             System.out.println("¿Cuántas Bombas de Humo deben ir en el paquete? Escriba un numero mayor o igual a 0");
             builder.agregarBombaHumo(sc.nextInt());
-            System.out.print("¿Cómo debe llamarse este paquete? Escriba un texto");
+            sc.nextLine(); //Limpiamos Buffer
+            System.out.print("¿Cómo debe llamarse este paquete? Escriba un texto\n");
             builder.nombrarPaquete(sc.nextLine());
-        }
-        
+
         return builder.getResult();
     }
 

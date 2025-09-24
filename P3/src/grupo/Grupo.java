@@ -32,7 +32,6 @@ public class Grupo {
     public Paquete crearPaquete() throws Exception{
         Director d = new Director(new PaqueteBuilder());
         int opt = 0;
-        try(Scanner sc = new Scanner(System.in)){
             System.out.println("Elije un paquete");
             System.out.println("1. Básico");
             System.out.println("2. Avanzado");
@@ -51,7 +50,6 @@ public class Grupo {
                 default:
                     throw new Exception("Valor inválido");
             }
-        }
     }
 
     public Campo crearCampo(){
