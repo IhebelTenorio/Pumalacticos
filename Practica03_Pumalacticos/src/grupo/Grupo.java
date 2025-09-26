@@ -53,7 +53,7 @@ public class Grupo {
     }
 
     public Campo crearCampo(){
-        int nivelTotal = 0;
+        int nivelTotal = lider.getNivel();
         for (Aspirante aspirante : aspirantes) {
             nivelTotal = nivelTotal + aspirante.getNivel();
         }
