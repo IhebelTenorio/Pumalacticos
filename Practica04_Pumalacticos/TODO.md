@@ -5,4 +5,5 @@
     - No hay sagas con directores distintos en cada peli
 - Hacer un menu
 - Igual y estaria bien generar la libreria en otra clase pero ya se los dejo a uds, nomas es separarlo
+- Preguntar en Classroom si los discos tambien siguen estructura de arbol o solo son discos sueltos.
 - Documentar en Javadoc
