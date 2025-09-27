@@ -1,0 +1,11 @@
+CATALOGO DE ROCKBUSTER
+├── Cosmere
+│   ├── Nacidos de la Bruma
+│   │   ├── Primera Era (Trilogía Original)
+│   │   │   ├── El Imperio Final
+│   │   │   ├── El Pozo de la Ascensión
+│   │   │   └── El Héroe de las Eras
+│   │   └── Historia Secreta
+│   └── Elantris
+├── La Maldición del Titán // Esto no está, ahí lo agregan o agreguen lo que quieran
+└── El Robo del Siglo // Esto no está, ahí lo agregan o agreguen lo que quieran
