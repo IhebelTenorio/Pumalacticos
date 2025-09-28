@@ -7,5 +7,6 @@ CATALOGO DE ROCKBUSTER
 │   │   │   └── El Héroe de las Eras
 │   │   └── Historia Secreta
 │   └── Elantris
+├── Zoé Unplugged [Adapter]
 ├── La Maldición del Titán // Esto no está, ahí lo agregan o agreguen lo que quieran
 └── El Robo del Siglo // Esto no está, ahí lo agregan o agreguen lo que quieran

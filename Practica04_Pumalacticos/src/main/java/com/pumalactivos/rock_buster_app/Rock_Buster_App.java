@@ -1,9 +1,15 @@
 package src.main.java.com.pumalactivos.rock_buster_app;
 
+import java.util.Scanner;
+
+import src.main.java.com.pumalactivos.rock_buster_app.patterns.adapter.Adapter;
+import src.main.java.com.pumalactivos.rock_buster_app.patterns.adapter.Disco;
+import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Component;
 import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Pelicula;
 import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Saga;
 
 public class Rock_Buster_App {
+    private static Scanner sc = new Scanner(System.in);
     public static void main(String[] args){
 
         // Vamos a hacer la estructura poco a poco xd
@@ -13,27 +19,41 @@ public class Rock_Buster_App {
         // El arbol lo podemos actualizar con IA para nosotros, pero hay que borrar estos comentarios xD
 
         Saga catalogo = new Saga("Catalogo de RockBuster", "No deberias poder leer esto");
-        Saga cosmere = new Saga("Cosmere", "Un universo con diversos planetas y sistemas de magia con un origen en comun");
-            Saga nacidosDeLaBruma = new Saga("Nacidos de la Bruma", "En el planeta Scadriel se lleva a cabo la historia de los alomantes, ferroquimistas y hemalurgicos");
-                Saga primeraEra = new Saga("Primera Era", "Cuenta la historia de Vin y la banda de Kelsier");
-                    Pelicula elImperioFinal = new Pelicula("El Imperio Final", "Brandon Sanderson", 124, "Fantasía", "Libro 1 de Mistborn, el Lord Legislador lleva governando 1000 años", 40.50);
-                    Pelicula elPozoDA = new Pelicula("El Pozo de la Ascención", "Brandon Sanderson", 144, "Fantasía", "Libro 2 de Mistborn, se puso dura la cosa en Luthadel", 48.75);
-                    Pelicula elHeroeDLE = new Pelicula("El Héroe de las eras", "Brandon Sanderson", 113, "Fantasía", "Libro 3 de Mistborn, Ahora se puso dura la cosa con entidades superiores", 55.25);
-                Pelicula historiaSecreta = new Pelicula("Historia Secreta", "Brandon Sanderson", 87, "Fantasía", "Spin-off de la Saga, no pertenece a ninguna era", 38.35);
-            Pelicula elantris = new Pelicula("Elantris", "Brandon Sanderson", 134, "Fantasía", "En el planeta Cel el principe Raoden de Arelon es alcanzado por la Shaod el dia de su boda", 20);
+            Saga cosmere = new Saga("Cosmere", "Un universo con diversos planetas y sistemas de magia con un origen en comun");
+                Saga nacidosDeLaBruma = new Saga("Nacidos de la Bruma", "En el planeta Scadriel se lleva a cabo la historia de los alomantes, ferroquimistas y hemalurgicos");
+                    Saga primeraEra = new Saga("Primera Era", "Cuenta la historia de Vin y la banda de Kelsier");
+                        Pelicula elImperioFinal = new Pelicula("El Imperio Final", "Brandon Sanderson", 124, "Fantasía", "Libro 1 de Mistborn, el Lord Legislador lleva governando 1000 años", 40.50);
+                        Pelicula elPozoDA = new Pelicula("El Pozo de la Ascención", "Brandon Sanderson", 144, "Fantasía", "Libro 2 de Mistborn, se puso dura la cosa en Luthadel", 48.75);
+                        Pelicula elHeroeDLE = new Pelicula("El Héroe de las eras", "Brandon Sanderson", 113, "Fantasía", "Libro 3 de Mistborn, Ahora se puso dura la cosa con entidades superiores", 55.25);
+                    Pelicula historiaSecreta = new Pelicula("Historia Secreta", "Brandon Sanderson", 87, "Fantasía", "Spin-off de la Saga, no pertenece a ninguna era", 38.35);
+                Pelicula elantris = new Pelicula("Elantris", "Brandon Sanderson", 134, "Fantasía", "En el planeta Cel el principe Raoden de Arelon es alcanzado por la Shaod el dia de su boda", 20);
+                Disco zoeUnplugged = new Disco("Zoé Unplugged", "Zoé", "Alternativo", 2011, 250);
         
 
 
         // Hay que ensamblar esto xd
         catalogo.addContenido(cosmere);
-        cosmere.addContenido(nacidosDeLaBruma);
-            nacidosDeLaBruma.addContenido(primeraEra);
-                primeraEra.addContenido(elImperioFinal);
-                primeraEra.addContenido(elPozoDA);
-                primeraEra.addContenido(elHeroeDLE);
-            nacidosDeLaBruma.addContenido(historiaSecreta);
-        cosmere.addContenido(elantris);
+            cosmere.addContenido(nacidosDeLaBruma);
+                nacidosDeLaBruma.addContenido(primeraEra);
+                    primeraEra.addContenido(elImperioFinal);
+                    primeraEra.addContenido(elPozoDA);
+                    primeraEra.addContenido(elHeroeDLE);
+                nacidosDeLaBruma.addContenido(historiaSecreta);
+            cosmere.addContenido(elantris);
+        catalogo.addContenido(new Adapter(zoeUnplugged));
 
+
+        
+
+        System.out.println("===== Bienvenido a RockBuster! =====");
+
+        // Esto es una prueba para ver que jalara el getContenido
+        System.out.println("Catalogo:\n");
+        int i = 0;
+        for (Component contenido : catalogo.getContenido()) {
+            System.out.println(i + ". " +contenido.getNombre());
+            i++;
+        }
         
 
 

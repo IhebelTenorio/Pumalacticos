@@ -4,6 +4,7 @@
     - No hay discos
     - No hay sagas con directores distintos en cada peli
 - Hacer un menu
-- Igual y estaria bien generar la libreria en otra clase pero ya se los dejo a uds, nomas es separarlo
+- Pasar la generacion del catalogo completo a un metodo estatico a parte
+    para que en el main solo hagamos `Saga catalogo = getCatalogo();`
 - Preguntar en Classroom si los discos tambien siguen estructura de arbol o solo son discos sueltos.
 - Documentar en Javadoc

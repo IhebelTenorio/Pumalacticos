@@ -27,6 +27,34 @@ public class Saga implements Component {
         return contenidoTotal;
     }
 
+    public List<Component> getContenidoGenero(String genero){ // Este metodo es para filtrar por genero
+        List<Component> contenidoTotal = getContenido();
+        List<Component> contenidoPorGenero = new ArrayList<>();
+        if(contenidoTotal.size()==0){
+            return contenidoPorGenero;
+        }
+        for(Component component: contenidoTotal){
+            if(component.getGenero().equals(genero)){
+                contenidoPorGenero.add(component);
+            }
+        }
+        return contenidoPorGenero;
+    }
+
+    public List<Component> getContenidoPrecio(double precioMax){ // Este metodo es para filtrar por genero
+        List<Component> contenidoTotal = getContenido();
+        List<Component> contenidoPorPrecio = new ArrayList<>();
+        if(contenidoTotal.size()==0){
+            return contenidoPorPrecio;
+        }
+        for(Component component: contenidoTotal){
+            if(component.getPrecioRenta() <= precioMax){
+                contenidoPorPrecio.add(component);
+            }
+        }
+        return contenidoPorPrecio;
+    }
+
     public void addContenido(Component component){
         componentes.add(component);
     }

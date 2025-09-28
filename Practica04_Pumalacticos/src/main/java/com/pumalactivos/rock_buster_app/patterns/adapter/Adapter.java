@@ -26,7 +26,7 @@ public class Adapter implements Component{
     }
 
     public String getSinopsis(){
-        return "Año de lanzamiento: " + adaptee.getEstreno();
+        return adaptee.getNombre() + " es un Disco a la venta parte del catalogo de Mixdown";
     }
 
     public double getPrecioRenta(){
