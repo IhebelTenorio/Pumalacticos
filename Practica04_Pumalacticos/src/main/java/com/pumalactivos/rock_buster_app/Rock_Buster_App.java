@@ -8,16 +8,25 @@ import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Compone
 import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Pelicula;
 import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Saga;
 
+/**
+ * Clase principal que actúa como cliente de los patrones Composite y Adapter.
+ * Contiene el menú interactivo para que el usuario explore el catálogo de RockBuster.
+ */
+
 public class Rock_Buster_App {
     private static Scanner sc = new Scanner(System.in);
+    private static Saga catalogo = inicializarCatalogo();
     public static void main(String[] args){
-
-        // Vamos a hacer la estructura poco a poco xd
-        // Yo voy a poner unos libros, pero los pondremos como si fueran pelis, es que el Cosmere fue la unica saga
-        // que conozco que tiene sagas y sagas dentro de otras.
-        // Voy a dejar un TXT del arbol de esto para que sea más claro al programar y testear
-        // El arbol lo podemos actualizar con IA para nosotros, pero hay que borrar estos comentarios xD
-
+         System.out.println("Bienvenido a RockBuster");
+        menuPrincipal();
+        System.out.println("¡Vuelve pronto a RockBuster!");
+    }
+    
+    /**
+     * Crea y ensambla el catálogo completo de productos de la tienda.
+     * @return La saga raíz que contiene todos los productos.
+     */
+    private static Saga inicializarCatalogo() {
         Saga catalogo = new Saga("Catalogo de RockBuster", "No deberias poder leer esto");
             Saga cosmere = new Saga("Cosmere", "Un universo con diversos planetas y sistemas de magia con un origen en comun");
                 Saga nacidosDeLaBruma = new Saga("Nacidos de la Bruma", "En el planeta Scadriel se lleva a cabo la historia de los alomantes, ferroquimistas y hemalurgicos");

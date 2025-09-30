@@ -8,6 +8,11 @@ public class Saga implements Component {
     private List<Component> componentes;
     private String sinopsis;
 
+        /**
+     * Constructor para crear una nueva Saga.
+     * @param nombre El nombre de la saga.
+     * @param sinopsis Una breve descripción de la saga.
+     */
     public Saga(String nombre, String sinopsis){
         this.nombre = nombre;
         this.componentes = new ArrayList<>();
@@ -55,6 +60,10 @@ public class Saga implements Component {
         return contenidoPorPrecio;
     }
 
+    /**
+     * Añade un componente (Pelicula o Saga) a esta saga.
+     * @param component El componente a agregar.
+     */
     public void addContenido(Component component){
         componentes.add(component);
     }
