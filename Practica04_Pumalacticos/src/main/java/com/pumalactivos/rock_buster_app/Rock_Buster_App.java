@@ -32,15 +32,17 @@ public class Rock_Buster_App {
     private static Saga inicializarCatalogo() {
         Saga catalogo = new Saga("Catalogo de RockBuster", "No deberias poder leer esto");
 
-        //Peliculas Cosmore
+        //Peliculas saga Cosmere
         Saga cosmere = new Saga("Cosmere", "Un universo con diversos planetas y sistemas de magia con un origen en comun");
             Saga nacidosDeLaBruma = new Saga("Nacidos de la Bruma", "En el planeta Scadriel se lleva a cabo la historia de los alomantes, ferroquimistas y hemalurgicos");
                 Saga primeraEra = new Saga("Primera Era", "Cuenta la historia de Vin y la banda de Kelsier");
-                    Pelicula elImperioFinal = new Pelicula("El Imperio Final", "Brandon Sanderson", 124, "Fantasía", "Libro 1 de Mistborn, el Lord Legislador lleva governando 1000 años", 40.50);
-                    Pelicula elPozoDA = new Pelicula("El Pozo de la Ascención", "Brandon Sanderson", 144, "Fantasía", "Libro 2 de Mistborn, se puso dura la cosa en Luthadel", 48.75);
-                    Pelicula elHeroeDLE = new Pelicula("El Héroe de las eras", "Brandon Sanderson", 113, "Fantasía", "Libro 3 de Mistborn, Ahora se puso dura la cosa con entidades superiores", 55.25);
-                Pelicula historiaSecreta = new Pelicula("Historia Secreta", "Brandon Sanderson", 87, "Fantasía", "Spin-off de la Saga, no pertenece a ninguna era", 38.35);
-            Pelicula elantris = new Pelicula("Elantris", "Brandon Sanderson", 134, "Fantasía", "En el planeta Cel el principe Raoden de Arelon es alcanzado por la Shaod el dia de su boda", 20);
+                    primeraEra.addContenido(new Pelicula("El Imperio Final", "Brandon Sanderson", 124, "Fantasía", "Libro 1 de Mistborn, el Lord Legislador lleva governando 1000 años", 40.50));
+                    primeraEra.addContenido(new Pelicula("El Pozo de la Ascención", "Brandon Sanderson", 144, "Fantasía", "Libro 2 de Mistborn, se puso dura la cosa en Luthadel", 48.75));
+                    primeraEra.addContenido(new Pelicula("El Héroe de las eras", "Brandon Sanderson", 113, "Fantasía", "Libro 3 de Mistborn, Ahora se puso dura la cosa con entidades superiores", 55.25));
+                nacidosDeLaBruma.addContenido(primeraEra); // Añadimos la saga de la primera era a Nacidos de la Bruma
+                nacidosDeLaBruma.addContenido(new Pelicula("Historia Secreta", "Brandon Sanderson", 87, "Fantasía", "Spin-off de la Saga, no pertenece a ninguna era", 38.35));
+            cosmere.addContenido(nacidosDeLaBruma); // Añadimos Nacidos de la Bruma a Cosmere
+            cosmere.addContenido(new Pelicula("Elantris", "Brandon Sanderson", 134, "Fantasía", "En el planeta Cel el principe Raoden de Arelon es alcanzado por la Shaod el dia de su boda", 20));
 
         // Películas individuales
         Pelicula elRoboDelSiglo = new Pelicula("El Robo del Siglo", "Ariel Winograd", 114, "Crimen", "Basada en el robo real al Banco Río.", 40.00);
@@ -55,13 +57,6 @@ public class Rock_Buster_App {
 
         //Ensamblaje del catálogo
         catalogo.addContenido(cosmere);
-            cosmere.addContenido(nacidosDeLaBruma);
-                nacidosDeLaBruma.addContenido(primeraEra);
-                    primeraEra.addContenido(elImperioFinal);
-                    primeraEra.addContenido(elPozoDA);
-                    primeraEra.addContenido(elHeroeDLE);
-                nacidosDeLaBruma.addContenido(historiaSecreta);
-            cosmere.addContenido(elantris);
         catalogo.addContenido(elRoboDelSiglo);
         catalogo.addContenido(parasite);
         catalogo.addContenido(interstellar);
@@ -88,7 +83,7 @@ public class Rock_Buster_App {
 
             switch (opcion) {
                 case "1":
-                    mostrarCatalogo(catalogo.getContenido());
+                    mostrarCatalogo(catalogo.getComponentes());
                     break;
                 case "2":
                     menuFiltrarPorGenero();
@@ -117,7 +112,8 @@ public class Rock_Buster_App {
         System.out.println("\nCatálogo de Productos ");
         for (int i = 0; i < productos.size(); i++) {
             Component p = productos.get(i);
-            System.out.printf("%d. %s - $%.2f\n", i + 1, p.getNombre(), p.getPrecioRenta());
+            String tipo = (p instanceof Saga) ? "[SAGA]" : "[INDIVIDUAL]";
+            System.out.printf("%d. %-10s %-30s $%.2f\n", i + 1, tipo, p.getNombre(), p.getPrecioRenta());
         }
 
         System.out.print("\nSelecciona un producto para ver detalles (o presiona Enter para volver): ");
@@ -211,13 +207,25 @@ public class Rock_Buster_App {
     private static void mostrarDetalles(Component p) {
         System.out.println("\nDETALLES DEL PRODUCTO");
         System.out.println("Nombre: " + p.getNombre());
-        System.out.println("Director/Artista: " + p.getDirector());
-        System.out.println("Género: " + p.getGenero());
-        if (p.getDuracion() > 0) {
-            System.out.println("Duración: " + p.getDuracion() + " min.");
-        }
+        System.out.printf("Precio de Renta: $%.2f\n", p.getPrecioRenta());
         System.out.println("Sinopsis: " + p.getSinopsis());
-        System.out.printf("Precio: $%.2f\n", p.getPrecioRenta());
+        
+        // Si es una Saga
+        if (p instanceof Saga) {
+            System.out.println("Duración Total: " + p.getDuracion() + " min.");
+            System.out.println("\nContenido de la Saga");
+            List<Component> contenidoSaga = ((Saga) p).getContenido(); 
+            for(Component item : contenidoSaga) {
+                System.out.println("- " + item.getNombre());
+            }
+        } else { // Si es Pelicula o Disco
+            System.out.println("Director/Artista: " + p.getDirector());
+            System.out.println("Género: " + p.getGenero());
+            if (p.getDuracion() > 0) {
+                System.out.println("Duración: " + p.getDuracion() + " min.");
+            }
+        }
+
         System.out.println("                   ");
         System.out.print("Presiona Enter para continuar...");
         sc.nextLine();

@@ -120,5 +120,13 @@ public class Saga implements Component {
         }
         return precioTotal * .95;
     }
+
+    /**
+ * Devuelve la lista de componentes directos (hijos) de esta saga.
+ * @return La lista de componentes de primer nivel dentro de la saga.
+ */
+    public List<Component> getComponentes() {
+    return componentes;
+    }
     
 }
