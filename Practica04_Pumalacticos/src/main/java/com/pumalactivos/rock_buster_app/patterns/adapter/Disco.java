@@ -30,22 +30,42 @@ public class Disco {
         this.precioVenta = precioVenta;
     }
 
+    /**
+     * Regresa el nombre del disco 
+     * @return nombre del disco
+     */
     public String getNombre(){
         return nombre;
     }
 
+    /**
+     * Regresa el nombre del artista o banda
+     * @return nombre del artista/banda
+     */
     public String getArtista(){
         return artista;
     }
 
+    /**
+     * Regresa el géenro del disco
+     * @return género del disco 
+     */
     public String getGenero(){
         return genero;
     }
 
+    /**
+     * Regresa el año del lanzamiento del disco 
+     * @return año de estreno
+     */
     public int getEstreno(){
         return estreno;
     }
 
+    /**
+     * Regresa el precio del disco
+     * @return precio del disco
+     */
     public int getPrecioVenta(){
         return precioVenta;
     }

@@ -20,6 +20,10 @@ public class Adapter implements Component{
         this.adaptee = disco;
     }
 
+    /**
+     * Regresa el nombre del disco
+     * @return el nombre del disco 
+     */
     @Override
     public String getNombre(){
         return adaptee.getNombre();
@@ -28,6 +32,7 @@ public class Adapter implements Component{
     /**
      * Adapta la llamada getDirector() a getArtista(), ya que un disco
      * no tiene director, sino artista.
+     * @return el nombre del artista del disco
      */
     @Override
     public String getDirector(){
@@ -42,11 +47,19 @@ public class Adapter implements Component{
         return 0; // No aplica para discos.
     }
 
+    /**
+     * Regresa e género del disco
+     * @return el género del disco
+     */
     @Override
     public String getGenero(){
         return adaptee.getGenero();
     }
 
+    /**
+     * Regresa una pequeña sipnosis del disco, contiene nombre del disco, el artista y año de estreno
+     * @return una cadena de texto de la sipnosis
+     */
     @Override
     public String getSinopsis(){
         return adaptee.getNombre() + " es un disco de " + adaptee.getArtista() + ", parte del catálogo de Mixdown. Lanzado en " + adaptee.getEstreno() + ".";
@@ -54,6 +67,7 @@ public class Adapter implements Component{
 
     /**
      * Adapta el precio de venta del disco al concepto de precio de renta.
+     * @return precio de venta del disco 
      */
     @Override
     public double getPrecioRenta(){

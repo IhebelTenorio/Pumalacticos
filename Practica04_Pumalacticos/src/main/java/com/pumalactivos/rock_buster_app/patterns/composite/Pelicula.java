@@ -28,31 +28,55 @@ public class Pelicula implements Component {
         this.precioRenta = precioRenta;
     }
 
+    /**
+     * Regresa el nombre de la película
+     * @return nombre de la pelicula 
+     */
     @Override
     public String getNombre(){
         return nombre;
     }
 
+    /**
+     * Regresa el nombre del director de la película
+     * @return nombre del director 
+     */
     @Override
     public String getDirector(){
         return director;
     }
 
+    /**
+     * Regresa la duración de la película
+     * @return duración de la película
+     */
     @Override
     public int getDuracion(){
         return duracion;
     }
 
+    /**
+     * Regresa el género de la película
+     * @return género de la película
+     */
     @Override
     public String getGenero(){
         return genero;
     }
 
+    /**
+     * Regresa la sipnosis de la película
+     * @return una sipnosis de la película 
+     */
     @Override
     public String getSinopsis(){
         return sinopsis;
     }
 
+    /**
+     * Obtiene el precio de la renta de una película 
+     * @return el costo de renta 
+     */
     @Override
     public double getPrecioRenta(){
         return precioRenta;
