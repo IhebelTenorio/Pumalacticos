@@ -1,4 +1,4 @@
-package src.main.java.com.pumalactivos.rock_buster_app.patterns.adapter;
+package com.pumalactivos.rock_buster_app.patterns.adapter;
 
 /**
  * Implementa el patrón Adapter para que un objeto 'Disco' pueda ser tratado
@@ -7,7 +7,7 @@ package src.main.java.com.pumalactivos.rock_buster_app.patterns.adapter;
  * correspondientes de la clase Disco.
  */
 
-import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Component;
+import com.pumalactivos.rock_buster_app.patterns.composite.Component;
 
 public class Adapter implements Component{
     private Disco adaptee;

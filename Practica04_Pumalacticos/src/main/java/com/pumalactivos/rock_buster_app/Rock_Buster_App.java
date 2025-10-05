@@ -1,14 +1,14 @@
-package src.main.java.com.pumalactivos.rock_buster_app;
+package com.pumalactivos.rock_buster_app;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import src.main.java.com.pumalactivos.rock_buster_app.patterns.adapter.Adapter;
-import src.main.java.com.pumalactivos.rock_buster_app.patterns.adapter.Disco;
-import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Component;
-import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Pelicula;
-import src.main.java.com.pumalactivos.rock_buster_app.patterns.composite.Saga;
+import com.pumalactivos.rock_buster_app.patterns.adapter.Adapter;
+import com.pumalactivos.rock_buster_app.patterns.adapter.Disco;
+import com.pumalactivos.rock_buster_app.patterns.composite.Component;
+import com.pumalactivos.rock_buster_app.patterns.composite.Pelicula;
+import com.pumalactivos.rock_buster_app.patterns.composite.Saga;
 
 /**
  * Clase principal que actúa como cliente de los patrones Composite y Adapter.

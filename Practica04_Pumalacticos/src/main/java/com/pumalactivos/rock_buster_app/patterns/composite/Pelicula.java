@@ -1,4 +1,4 @@
-package src.main.java.com.pumalactivos.rock_buster_app.patterns.composite;
+package com.pumalactivos.rock_buster_app.patterns.composite;
 
 public class Pelicula implements Component {
 

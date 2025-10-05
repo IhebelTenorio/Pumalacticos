@@ -1,4 +1,4 @@
-package src.main.java.com.pumalactivos.rock_buster_app.patterns.adapter;
+package com.pumalactivos.rock_buster_app.patterns.adapter;
 
 /**
  * Representa un Disco de la tienda Mixdown.
