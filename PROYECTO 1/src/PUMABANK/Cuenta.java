@@ -1,5 +1,6 @@
 package PUMABANK;
 
+import PUMABANK.decorato.ICuenta;
 import PUMABANK.state.EstadoActiva;
 import PUMABANK.state.EstadoCerrada;
 import PUMABANK.state.EstadoCongelada;
@@ -14,7 +15,7 @@ import PUMABANK.strategy.EstrategiaInteresMensual;
  *
  * @author PUMALACTICOS
  */
-public class Cuenta {
+public class Cuenta implements ICuenta {
 
     // Atributos principales
     private String numeroDeCuenta;
@@ -72,6 +73,7 @@ public class Cuenta {
     // El cliente llama a estos métodos. La cuenta simplemente
     // reenvía la llamada al objeto de estado actual.
 
+    @Override
     public void retirar(double monto) {
         try {
             // Pasamos 'this' (la instancia de Cuenta) como contexto
@@ -81,6 +83,7 @@ public class Cuenta {
         }
     }
 
+    @Override
     public void depositar(double monto) {
          try {
             this.estadoActual.depositar(this, monto);
@@ -89,11 +92,13 @@ public class Cuenta {
         }
     }
     
+    @Override
     public double getSaldo() {
         // La consulta de saldo también es controlada por el estado
         return this.estadoActual.consultarSaldo(this);
     }
     
+    @Override
     public void cerrarCuenta() {
         try {
             this.estadoActual.cerrarCuenta(this);
@@ -108,6 +113,8 @@ public class Cuenta {
      * Delega el cálculo del interés a la estrategia actual
      * y aplica el monto depositándolo en la cuenta.
      */
+
+    @Override
     public void aplicarInteres() {
         System.out.println("Procesando intereses para cuenta: " + numeroDeCuenta);
         // 1. Delega el CÁLCULO a la estrategia
@@ -130,18 +137,33 @@ public class Cuenta {
      *
      * @param nuevaEstrategia El nuevo objeto de estrategia.
      */
+
+    @Override
     public void setEstrategiaInteres(IEstrategiaInteres nuevaEstrategia) {
         this.estrategiaInteres = nuevaEstrategia;
         System.out.println("INFO (" + this.numeroDeCuenta + "): Estrategia de interés actualizada a -> " + 
                            nuevaEstrategia.getClass().getSimpleName());
     }
     
-    /**
-     * Simula el paso del tiempo.
-     */
-    public void simularPasoDeMes() {
-        this.antiguedadMeses++;
+    @Override
+    public String getNumeroDeCuenta() {
+        return this.numeroDeCuenta;
     }
+    
+    @Override
+    public String getNombreCliente() {
+        return this.nombreCliente;
+    }
+
+    /**
+     * Implementación base de la descripción.
+     * @return El nombre del titular de la cuenta.
+     */
+    @Override
+    public String getDescripcion() {
+        return "Cuenta Básica (" + this.nombreCliente + ")";
+    }
+
 
     // MÉTODOS DE CONTROL (PÚBLICOS)
     // Estos son los métodos que los objetos de estado (en otro paquete)
@@ -182,5 +204,12 @@ public class Cuenta {
 
     public int getAntiguedadMeses() {
         return antiguedadMeses;
+    }
+
+        /**
+     * Simula el paso del tiempo.
+     */
+    public void simularPasoDeMes() {
+        this.antiguedadMeses++;
     }
 }
