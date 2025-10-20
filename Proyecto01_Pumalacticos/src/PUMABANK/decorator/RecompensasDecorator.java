@@ -1,4 +1,4 @@
-package PUMABANK.decorato;
+package PUMABANK.decorator;
 
 /**
  * Decorador Concreto: Programa de Recompensas.

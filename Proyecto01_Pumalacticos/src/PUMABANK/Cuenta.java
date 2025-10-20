@@ -1,6 +1,6 @@
 package PUMABANK;
 
-import PUMABANK.decorato.ICuenta;
+import PUMABANK.decorator.ICuenta;
 import PUMABANK.state.EstadoActiva;
 import PUMABANK.state.EstadoCerrada;
 import PUMABANK.state.EstadoCongelada;

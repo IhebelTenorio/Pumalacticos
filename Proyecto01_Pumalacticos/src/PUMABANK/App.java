@@ -1,6 +1,6 @@
 package PUMABANK;
 
-import PUMABANK.decorato.*;
+import PUMABANK.decorator.*;
 import PUMABANK.strategy.*;
 
 public class App {

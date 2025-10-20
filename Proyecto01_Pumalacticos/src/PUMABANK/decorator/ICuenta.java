@@ -1,4 +1,4 @@
-package PUMABANK.decorato;
+package PUMABANK.decorator;
 
 import PUMABANK.strategy.IEstrategiaInteres;
 
