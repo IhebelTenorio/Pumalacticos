@@ -1,46 +1,95 @@
 package PUMABANK;
 
+// Importamos 
 import PUMABANK.decorator.*;
+import PUMABANK.proxy.CuentaProxy;
 import PUMABANK.strategy.*;
+import java.util.Scanner;
 
+/**
+ * Aplicación principal interactiva de PumaBank.
+ * Uso de los patrones State, Strategy, Decorator y Proxy.
+ *
+ * @author MPumalacticos
+ */
 public class App {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+         
+        // estrategia
+        IEstrategiaInteres mensual = new EstrategiaInteresMensual();
         
-        // Estrategia de interés primero
-        IEstrategiaInteres estrategiaMensual = new EstrategiaInteresMensual();
+        // cuenta base (Componente Concreto)
+        ICuenta cuentaBase = new Cuenta("PUMALACTICO 001", "Cliente Interactivo", 5000, mensual);
 
-        // Cuenta base (El "Componente Concreto")
-        //    Nota: la variable es de tipo ICuenta (la abstracción)
-        ICuenta cuentaCliente1 = new Cuenta(
-            "001", "Cliente Básico", 15000, estrategiaMensual
-        );
-        
-        System.out.println(cuentaCliente1.getDescripcion());
-        cuentaCliente1.retirar(120000); // Retiro grande
-        
-        System.out.println("\n-------------------------\n");
+        // Decoramos (opcional)
+        ICuenta cuentaDecorada = new RecompensasDecorator(new SeguroAntifraudeDecorator(cuentaBase));
 
-        // Cuenta DECORADA 
-        ICuenta cuentaCliente2 = new Cuenta(
-            "002", "Cliente Premium", 15000, estrategiaMensual
-        );
-        
-        // Recompensas
-        cuentaCliente2 = new RecompensasDecorator(cuentaCliente2);
-        
-        // Seguro Antifraude
-        cuentaCliente2 = new SeguroAntifraudeDecorator(cuentaCliente2);
-        
-        System.out.println(cuentaCliente2.getDescripcion());
-        
-        // Probamos el depósito (activará Recompensas)
-        cuentaCliente2.depositar(1000); 
-        
-        // Probamos el retiro (activará el Seguro)
-        cuentaCliente2.retirar(120000); 
-        
-        System.out.println("\n-------------------------\n");
-        // Vemos la descripción final
-        System.out.println(cuentaCliente2.getDescripcion());
+        //Creamos el Proxy, "envolviendo" al objeto real (decorado)
+        // El NIP "1234" está quemado aquí por simplicidad.
+        CuentaProxy miCuentaProxy = new CuentaProxy(cuentaDecorada, "1234");
+
+        // la variable que usaremos es 'miCuentaProxy'
+
+        int opcion = -1;
+        while (opcion != 0) {
+            System.out.println("\n PUMABANK CAJERO FELINO INTERACTIVO ");
+            System.out.println("Cliente: " + miCuentaProxy.getNombreCliente());
+            System.out.println("Cuenta: " + miCuentaProxy.getNumeroDeCuenta());
+            System.out.println("Servicios: " + miCuentaProxy.getDescripcion());
+            System.out.println("----------------------------------------------");
+            System.out.println("1. Iniciar Sesión (Ingresar NIP)");
+            System.out.println("2. Consultar Saldo");
+            System.out.println("3. Depositar");
+            System.out.println("4. Retirar");
+            System.out.println("5. Aplicar Intereses");
+            System.out.println("6. Cerrar Sesión");
+            System.out.println("0. Salir del Cajero");
+            System.out.print("Seleccione una opción: ");
+            
+            try {
+                opcion = Integer.parseInt(scanner.nextLine());
+
+                switch (opcion) {
+                    case 1:
+                        System.out.print("Ingrese su NIP de 4 dígitos: ");
+                        String nip = scanner.nextLine();
+                        miCuentaProxy.login(nip);
+                        break;
+                    case 2:
+                        // getSaldo() ahora puede lanzar una excepción si no hay login
+                        double saldo = miCuentaProxy.getSaldo();
+                        System.out.println("SALDO ACTUAL: $" + saldo);
+                        break;
+                    case 3:
+                        System.out.print("Ingrese monto a depositar: ");
+                        double deposito = Double.parseDouble(scanner.nextLine());
+                        miCuentaProxy.depositar(deposito);
+                        break;
+                    case 4:
+                        System.out.print("Ingrese monto a retirar: ");
+                        double retiro = Double.parseDouble(scanner.nextLine());
+                        miCuentaProxy.retirar(retiro);
+                        break;
+                    case 5:
+                        miCuentaProxy.aplicarInteres();
+                        break;
+                    case 6:
+                        miCuentaProxy.logout();
+                        break;
+                    case 0:
+                        System.out.println("Adiosss...");
+                        break;
+                    default:
+                        System.out.println("Opcion no valida.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Ingrese un número válido.");
+            } catch (Exception e) {
+                 // Aquí atrapamos las excepciones de seguridad del Proxy
+                 System.err.println("\n*** ERROR DE OPERACIÓN: " + e.getMessage() + " ***");
+            }
+        }
+        scanner.close();
     }
 }
