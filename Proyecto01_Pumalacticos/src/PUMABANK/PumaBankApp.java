@@ -4,6 +4,9 @@ package PUMABANK;
 import PUMABANK.decorator.*;
 import PUMABANK.proxy.CuentaProxy;
 import PUMABANK.strategy.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,9 +15,13 @@ import java.util.Scanner;
  *
  * @author MPumalacticos
  */
-public class App {
+public class PumaBankApp {
+    private static int mes = 1;
+    private static Scanner scanner = new Scanner(System.in);
+    // TODO hashmap de usuarios
+    //      los usuarios tinenen cuentas!
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
          
         // estrategia
         IEstrategiaInteres mensual = new EstrategiaInteresMensual();
@@ -44,6 +51,7 @@ public class App {
             System.out.println("4. Retirar");
             System.out.println("5. Aplicar Intereses");
             System.out.println("6. Cerrar Sesión");
+            System.out.println("7. Ir al siguiente mes");
             System.out.println("0. Salir del Cajero");
             System.out.print("Seleccione una opción: ");
             
@@ -77,6 +85,10 @@ public class App {
                     case 6:
                         miCuentaProxy.logout();
                         break;
+                    case 7:
+                        mes++;
+                        updateUsers();
+                        break;
                     case 0:
                         System.out.println("Adiosss...");
                         break;
@@ -91,5 +103,10 @@ public class App {
             }
         }
         scanner.close();
+    }
+
+    // TODO
+    private static void updateUsers(){
+        // para cada usuario, a cada uno ejecutarle .update()
     }
 }

@@ -197,10 +197,7 @@ public class Cuenta implements ICuenta {
     }
 
     // Getters públicos para información (útiles para otros patrones)
-    
-    public String getNumeroDeCuenta() {
-        return numeroDeCuenta;
-    }
+
 
     public int getAntiguedadMeses() {
         return antiguedadMeses;

@@ -76,36 +76,56 @@ public class CuentaProxy implements ICuenta {
     }
 
     @Override
-    public void retirar(double monto) throws Exception {
+    public void retirar(double monto){
         // Control de Acceso
-        verificarAcceso();
+        try {
+            verificarAcceso();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         // Delegación (si el paso 1 fue exitoso)
         System.out.println("PROXY: Permitiendo operación 'retirar'...");
         this.cuentaReal.retirar(monto);
     }
 
     @Override
-    public void depositar(double monto) throws Exception {
+    public void depositar(double monto){
         // Control de Acceso
-        verificarAcceso();
+                try {
+            verificarAcceso();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         // Delegación
         System.out.println("PROXY: Permitiendo operación 'depositar'...");
         this.cuentaReal.depositar(monto);
     }
 
     @Override
-    public double getSaldo() throws Exception {
+    public double getSaldo(){
         // Control de Acceso
-        verificarAcceso();
+        try {
+            verificarAcceso();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
         // Delegación
         System.out.println("PROXY: Permitiendo operación 'getSaldo'...");
         return this.cuentaReal.getSaldo();
     }
     
     @Override
-    public void cerrarCuenta() throws Exception {
+    public void cerrarCuenta(){
         // Control de Acceso
-        verificarAcceso();
+        try {
+            verificarAcceso();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         // Delegación
         System.out.println("PROXY: Permitiendo operación 'cerrarCuenta'...");
         this.cuentaReal.cerrarCuenta();
@@ -116,9 +136,14 @@ public class CuentaProxy implements ICuenta {
     // ser vistos sin NIP (vemos xd)
 
     @Override
-    public void aplicarInteres() throws Exception {
+    public void aplicarInteres(){
         // Aplicar interés requiere NIP? , es el vemos xd.
-        verificarAcceso();
+        try {
+            verificarAcceso();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         System.out.println("PROXY: Permitiendo operación 'aplicarInteres'...");
         this.cuentaReal.aplicarInteres();
     }
