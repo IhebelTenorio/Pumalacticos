@@ -138,13 +138,13 @@ public class CuentaProxy implements ICuenta {
     @Override
     public void aplicarInteres(){
         // Aplicar interés requiere NIP? , es el vemos xd.
-        try {
-            verificarAcceso();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return;
-        }
-        System.out.println("PROXY: Permitiendo operación 'aplicarInteres'...");
+        // try {
+        //     verificarAcceso();
+        // } catch (Exception e) {
+        //     System.out.println(e.getMessage());
+        //     return;
+        // }
+        // System.out.println("PROXY: Permitiendo operación 'aplicarInteres'...");
         this.cuentaReal.aplicarInteres();
     }
     
@@ -176,5 +176,10 @@ public class CuentaProxy implements ICuenta {
     public String getDescripcion() {
         // La descripción es pública, no requiere NIP.
         return this.cuentaReal.getDescripcion();
+    }
+
+    @Override
+    public void update(){
+        this.cuentaReal.update();
     }
 }
