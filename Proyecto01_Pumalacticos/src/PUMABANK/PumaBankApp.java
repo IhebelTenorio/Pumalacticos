@@ -4,9 +4,6 @@ package PUMABANK;
 import PUMABANK.decorator.*;
 import PUMABANK.iteratorComposite.Registro;
 import PUMABANK.proxy.CuentaProxy;
-import PUMABANK.strategy.*;
-
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
