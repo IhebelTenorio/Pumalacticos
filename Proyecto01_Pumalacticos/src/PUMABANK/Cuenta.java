@@ -203,10 +203,15 @@ public class Cuenta implements ICuenta {
         return antiguedadMeses;
     }
 
-        /**
+    /**
      * Simula el paso del tiempo.
      */
     public void simularPasoDeMes() {
         this.antiguedadMeses++;
+    }
+
+    public void update(){
+        simularPasoDeMes();
+        aplicarInteres();
     }
 }

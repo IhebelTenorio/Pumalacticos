@@ -1,5 +1,6 @@
 package PUMABANK.decorator;
 
+import PUMABANK.observer.Observer;
 import PUMABANK.strategy.IEstrategiaInteres;
 
 /**
@@ -9,7 +10,7 @@ import PUMABANK.strategy.IEstrategiaInteres;
  *
  * @author PumaLacticos
  */
-public interface ICuenta {
+public interface ICuenta extends Observer{
 
     // Operaciones principales del cliente
 
@@ -24,5 +25,6 @@ public interface ICuenta {
     void setEstrategiaInteres(IEstrategiaInteres nuevaEstrategia);
     String getNumeroDeCuenta();
     String getNombreCliente();
-    String getDescripcion(); 
+    String getDescripcion();
+    default void update(){} //por default no hace nada, para no afectar otras clases
 }
