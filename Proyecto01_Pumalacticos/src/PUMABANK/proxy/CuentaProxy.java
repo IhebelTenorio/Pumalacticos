@@ -75,6 +75,15 @@ public class CuentaProxy implements ICuenta {
         }
     }
 
+    /**
+     * Permite obtener una referencia al objeto real que este proxy protege.
+     * Usar con precaución, ya que salta la capa de seguridad del proxy.
+     * @return La instancia de ICuenta (Cuenta, Decorador o Portafolios) real.
+     */
+    public ICuenta getCuentaReal() {
+        return cuentaReal;
+    }
+
     @Override
     public void retirar(double monto){
         // Control de Acceso
@@ -180,6 +189,9 @@ public class CuentaProxy implements ICuenta {
 
     @Override
     public void update(){
+    // Delegar a la cuenta real (o decorada/portafolios)
+        // Decidimos que el proceso automático de banco no requiere NIP
+         System.out.println("PROXY: Delegando operación 'update' a " + cuentaReal.getNumeroDeCuenta());
         this.cuentaReal.update();
     }
 }

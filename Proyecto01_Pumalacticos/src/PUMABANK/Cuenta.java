@@ -1,21 +1,23 @@
 package PUMABANK;
 
 import PUMABANK.decorator.ICuenta;
+import PUMABANK.observer.NotificadorCuenta;
+import PUMABANK.observer.ReceptorNotificacion;
 import PUMABANK.state.EstadoActiva;
-import PUMABANK.state.EstadoCerrada;
-import PUMABANK.state.EstadoCongelada;
 import PUMABANK.state.EstadoSobregirada;
 import PUMABANK.state.IEstadoCuenta;
-import PUMABANK.strategy.IEstrategiaInteres;
 import PUMABANK.strategy.EstrategiaInteresMensual;
+import PUMABANK.strategy.IEstrategiaInteres;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Clase Cuenta (Contexto para el patrón State y Strategy por el momento).
+ * Clase Cuenta Componente Concreto (Decorator) y Sujeto Concreto (Observer).
  * Delega su comportamiento de operaciones al objeto de estado actual.
  *
  * @author PUMALACTICOS
  */
-public class Cuenta implements ICuenta {
+public class Cuenta implements ICuenta, NotificadorCuenta {
 
     // Atributos principales
     private String numeroDeCuenta;
@@ -29,6 +31,11 @@ public class Cuenta implements ICuenta {
      */
     private IEstadoCuenta estadoActual;
     private IEstrategiaInteres estrategiaInteres;
+    /**
+     * Lista de observadores suscritos a esta cuenta.
+     */
+    private transient List<ReceptorNotificacion> observadores;
+
 
     /**
      * Constructor de la Cuenta.
@@ -42,8 +49,9 @@ public class Cuenta implements ICuenta {
         this.numeroDeCuenta = numeroDeCuenta;
         this.nombreCliente = nombreCliente;
         this.saldo = saldoInicial;
-        
         this.antiguedadMeses = 0;
+        this.observadores = new ArrayList<>();
+
         
         // Inicializamos el estado.
         // Las clases de estado ahora están en otro paquete.
@@ -177,7 +185,10 @@ public class Cuenta implements ICuenta {
      */
     public void setEstado(IEstadoCuenta nuevoEstado) {
         this.estadoActual = nuevoEstado;
-        System.out.println("INFO (" + this.numeroDeCuenta + "): Transición de estado a -> " + nuevoEstado.getClass().getSimpleName());
+        String msg = "CAMBIO DE ESTADO: La cuenta ahora esta " + nuevoEstado.getClass().getSimpleName();
+        System.out.println("INFORMACION (" + this.numeroDeCuenta + "): Transición de estado a -> " + nuevoEstado.getClass().getSimpleName());     
+        // NOTIFICAMOS EL CAMBIO DE ESTADO
+        this.notificar(msg);
     }
 
     /**
@@ -213,5 +224,29 @@ public class Cuenta implements ICuenta {
     public void update(){
         simularPasoDeMes();
         aplicarInteres();
+    }
+
+    @Override
+    public void adjuntar(ReceptorNotificacion o) {
+        this.observadores.add(o);
+        System.out.println("Observador " + o.getClass().getSimpleName() + " adjuntado a cuenta " + this.numeroDeCuenta);
+    }
+
+    @Override
+    public void desvincular(ReceptorNotificacion o) {
+        this.observadores.remove(o);
+        System.out.println("Observador " + o.getClass().getSimpleName() + " desvinculado de cuenta " + this.numeroDeCuenta);
+    }
+
+    /**
+     * Método público para notificar.
+     */
+    @Override
+    public void notificar(String evento) {
+        // Añadimos info de la cuenta 
+        String eventoConContexto = "[CUENTA: " + this.numeroDeCuenta + "] " + evento;
+        for (ReceptorNotificacion o : this.observadores) {
+            o.actualizar(eventoConContexto);
+        }
     }
 }

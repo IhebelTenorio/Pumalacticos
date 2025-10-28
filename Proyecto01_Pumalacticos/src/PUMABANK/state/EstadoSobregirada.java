@@ -29,9 +29,11 @@ public class EstadoSobregirada implements IEstadoCuenta {
         
         System.out.println("Depósito en cuenta sobregirada...");
         cuenta.setSaldoInterno(cuenta.getSaldoInterno() + monto);
-        System.out.println("Depósito de " + monto + " aplicado. Saldo actual: " + cuenta.getSaldoInterno());
+        String msg = ("Depósito de " + monto + " aplicado. Saldo actual: " + cuenta.getSaldoInterno());
+        System.out.println(msg);
+        cuenta.notificar(msg);
 
-        // ¡Transición de estado de regreso!
+        // Verificamos si el saldo ya es positivo para cambiar de estado
         if (cuenta.getSaldoInterno() >= 0) {
             System.out.println("¡Saldo positivo! Transicionando de regreso a ACTIVA.");
             cuenta.setEstado(new EstadoActiva());
