@@ -118,4 +118,22 @@ public class PuntoDeVentaFacade {
             observer.update(venta);
         }
     }
+
+    /**
+     * Resta una cantidad específica de un producto en el carrito.
+     */
+    public void disminuirCantidad(String codigoBarras, int cantidad) {
+        ventaBuilder.disminuirCantidadProducto(codigoBarras, cantidad);
+    }
+    
+    /**
+     * Obtiene el historial completo de ventas registradas en la base de datos.
+     * Para generar reportes y cortes de caja.
+     * @return Lista de objetos Venta.
+     */
+    public List<Venta> obtenerHistorialVentas() {
+        // Retornamos la lista estática de la DB. 
+        // En un sistema real, aquí haríamos una query "SELECT * FROM ventas"
+        return DB.ventas;
+    }
 }

@@ -92,7 +92,7 @@ public class VentaBuilder {
                 .sum();
     }
 
-    // --- Getters para que la Facade pueda mostrar el estado actual al Frontend ---
+    // Getters para que la Facade pueda mostrar el estado actual al Frontend
     
     public List<LineaVenta> obtenerLineas() {
         return lineas; // Devolvemos la lista actual para mostrar en la Tabla
@@ -103,7 +103,6 @@ public class VentaBuilder {
     }
 
     /**
-     * ¡EL GRAN FINAL!
      * Empaqueta todo en un objeto Venta inmutable.
      */
     public Venta build() {
@@ -121,4 +120,33 @@ public class VentaBuilder {
             datosFacturacion
         );
     }
+
+    /**
+     * Disminuye la cantidad de un producto específico.
+     * Si la cantidad restante es 0 o menos, elimina la línea completa.
+     */
+    public void disminuirCantidadProducto(String codigoBarras, int cantidadARestar) {
+        Optional<LineaVenta> lineaOpt = lineas.stream()
+                .filter(l -> l.getProducto().getCodigoBarras().equals(codigoBarras))
+                .findFirst();
+
+        if (lineaOpt.isPresent()) {
+            LineaVenta linea = lineaOpt.get();
+            int nuevaCantidad = linea.getCantidad() - cantidadARestar;
+
+            if (nuevaCantidad > 0) {
+                // Si todavía sobran productos, actualizamos la cantidad
+                // (La clase LineaVenta recalcula su subtotal automáticamente al hacer set)
+                linea.setCantidad(nuevaCantidad);
+            } else {
+                // Si la resta da 0 o negativo, borramos toda la línea
+                eliminarProducto(codigoBarras);
+                return; // eliminarProducto ya recalcula el total, así que nos salimos
+            }
+            
+            // Recalculamos el total de la venta
+            recalcularTotal();
+        }
+    }
+
 }
