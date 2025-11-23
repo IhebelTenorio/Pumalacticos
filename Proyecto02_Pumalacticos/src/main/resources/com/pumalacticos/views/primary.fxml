@@ -99,6 +99,8 @@
             
             <VBox VBox.vgrow="ALWAYS" />
             
+            <Button text="Gestionar Productos" onAction="#irAProductos" maxWidth="1.7976931348623157E308"/>
+            
             <Button text="Ir a Reportes" onAction="#irAReportes" maxWidth="1.7976931348623157E308"/>
          </children>
       </VBox>

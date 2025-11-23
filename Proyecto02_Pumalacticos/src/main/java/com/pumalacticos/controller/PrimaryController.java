@@ -253,6 +253,11 @@ public class PrimaryController {
         OdinApp.setRoot("secondary");
     }
 
+    @FXML
+    private void irAProductos() throws IOException {
+        OdinApp.setRoot("productos");
+    }
+
     // Métodos Auxiliares Privados (Helpers UI)
 
     /**

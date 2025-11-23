@@ -54,10 +54,26 @@ public class PuntoDeVentaFacade {
 
         Producto producto = productoOpt.get();
 
-        // Validar Stock antes de agregar
-        if (producto.getStock() < cantidad) {
-            throw new Exception("Stock insuficiente. Disponibles: " + producto.getStock());
+        // --- INICIO DE LA CORRECCIÓN DEL BUG DE STOCK ---
+
+        // 1. Verificación de stock general. Si el producto no tiene stock, no se puede agregar.
+        if (producto.getStock() <= 0) {
+            throw new Exception("No hay más productos en stock para: " + producto.getNombre());
         }
+    
+        // 2. Ver cuántos de este producto ya están en el carrito actual
+        int cantidadEnCarrito = ventaBuilder.obtenerLineas().stream()
+                .filter(linea -> linea.getProducto().getCodigoBarras().equals(codigoBarras))
+                .mapToInt(LineaVenta::getCantidad)
+                .sum();
+    
+        // 3. Validar si al agregar la nueva cantidad se excede el stock total
+        if ((cantidadEnCarrito + cantidad) > producto.getStock()) {
+            int disponiblesReales = producto.getStock() - cantidadEnCarrito;
+            throw new Exception("Stock insuficiente para '" + producto.getNombre() + "'.\nDisponibles: " + disponiblesReales + ", en carrito ya hay: " + cantidadEnCarrito);
+        }
+        
+        // --- FIN DE LA CORRECCIÓN ---
 
         // B. Delegar al Builder
         ventaBuilder.agregarProducto(producto, cantidad);

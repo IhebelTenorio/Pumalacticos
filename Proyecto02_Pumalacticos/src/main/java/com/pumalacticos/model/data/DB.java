@@ -20,5 +20,7 @@ public class DB {
         productos.add(new Producto("004", "Papas Sabritas Sal", 17.00, 30, "Botanas", false));
         productos.add(new Producto("005", "Cigarros Marlboro", 75.00, 20, "Tabaco", true));
         productos.add(new Producto("006", "Galletas Emperador", 15.00, 40, "Galletas", false));
+        productos.add(new Producto("793573264107","Skarch 1.5L",13, 4, "Bebidas",false));
+        productos.add(new Producto("7501011121997", "Stax Crema y Cebolla", 65,5,"Botanas",false));
     }
 }
