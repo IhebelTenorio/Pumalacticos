@@ -99,8 +99,15 @@ public class ProductosController {
         Optional<Producto> result = dialog.showAndWait();
 
         result.ifPresent(producto -> {
-            DB.productos.add(producto);
-            tablaProductos.setItems(FXCollections.observableArrayList(DB.productos));
+            boolean yaExiste = DB.productos.stream()
+                                    .anyMatch(p -> p.getCodigoBarras().equals(producto.getCodigoBarras()));
+
+            if (yaExiste) {
+                mostrarAlerta("Error", "Ya existe un producto con el mismo código de barras.", Alert.AlertType.ERROR);
+            } else {
+                DB.productos.add(producto);
+                tablaProductos.setItems(FXCollections.observableArrayList(DB.productos));
+            }
         });
     }
 

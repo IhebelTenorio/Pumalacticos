@@ -1,5 +1,6 @@
 /home/ihebel/School/Ciencias/3th/MP/Pumalacticos/Proyecto02_Pumalacticos/src/main/java/com/pumalacticos/model/patterns/observer/IVentaObserver.java
 /home/ihebel/School/Ciencias/3th/MP/Pumalacticos/Proyecto02_Pumalacticos/src/main/java/module-info.java
+/home/ihebel/School/Ciencias/3th/MP/Pumalacticos/Proyecto02_Pumalacticos/src/main/java/com/pumalacticos/controller/ProductosController.java
 /home/ihebel/School/Ciencias/3th/MP/Pumalacticos/Proyecto02_Pumalacticos/src/main/java/com/pumalacticos/controller/PrimaryController.java
 /home/ihebel/School/Ciencias/3th/MP/Pumalacticos/Proyecto02_Pumalacticos/src/main/java/com/pumalacticos/model/patterns/strategyPagos/PagoEfectivoStrategy.java
 /home/ihebel/School/Ciencias/3th/MP/Pumalacticos/Proyecto02_Pumalacticos/src/main/java/com/pumalacticos/controller/SecondaryController.java

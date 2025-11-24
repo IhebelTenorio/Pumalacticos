@@ -12,6 +12,7 @@ module-info.class
 com/pumalacticos/controller/SecondaryController.class
 com/pumalacticos/controller/PrimaryController.class
 com/pumalacticos/model/data/DB.class
+com/pumalacticos/controller/ProductosController.class
 com/pumalacticos/model/domain/LineaVenta.class
 com/pumalacticos/OdinApp.class
 com/pumalacticos/model/patterns/strategyPagos/IPagoStrategy.class
