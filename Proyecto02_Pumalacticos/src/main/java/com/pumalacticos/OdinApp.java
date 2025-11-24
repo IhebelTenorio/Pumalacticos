@@ -32,7 +32,8 @@ public class OdinApp extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch();// Tuve que modificar esto para que jalara con el Dockerfile att. Ihebelito
+        //OdinApp.main(args);
     }
 
 }
